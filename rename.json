@@ -1,0 +1,4 @@
+{
+  "plugins/name.coffee": "plugins/{%= name %}.coffee"
+, "test/name.coffee": "test/{%= name %}.coffee"
+}
