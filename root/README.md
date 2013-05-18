@@ -7,7 +7,6 @@
 ```
 git clone {%= repository %} {%= name %}
 cd {%= name %}
-npm install
 ```
 
 ## Usage
