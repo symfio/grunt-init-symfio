@@ -16,26 +16,35 @@
   , "url": "{%= repository %}"
   }
 , "scripts": {
-    "start": "npm install && coffee index.coffee"
-  , "test": "grunt"
+    "start": "npm install && node_modules/.bin/coffee index.coffee"
+  , "test": "npm install && grunt"
   }
 , "dependencies": {
-    "symfio": "~1.0"
-  , "symfio-contrib-express": "~0.1"
-  , "symfio-contrib-express-logger": "~0.1"
-  , "symfio-contrib-mongoose": "~0.1"
-  , "symfio-contrib-fixtures": "~0.1"
-  , "cruder": "~0.1"
+    "coffee-script": "~1.6"
+  , "symfio": "~2.0"
+  , "symfio-contrib-winston": "~2.0"
+  , "symfio-contrib-express": "~2.0"
+  , "symfio-contrib-assets": "~2.0"
+  , "symfio-contrib-bower": "~2.0"
+  , "symfio-contrib-mongoose": "~2.0"
+  , "symfio-contrib-fixtures": "~2.0"
   }
 , "devDependencies": {
-    "symfio-suite": "~1.0"
+    "when": "~2.2"
+  , "chai": "~1.7"
+  , "chai-as-promised": "~3.3"
+  , "chai-http": "~0.4"
+  , "sinon": "~1.7"
+  , "sinon-chai": "~2.4"
   , "grunt": "~0.4"
   , "grunt-simple-mocha": "~0.4"
+  , "grunt-karma": "~0.4"
   , "grunt-coffeelint": "~0.0"
   }
 , "engines": {
-    "node": "~0.8"
-  , "npm": "~1.2"
+    "node": ">=0.8"
+  , "npm": ">=1.2"
   , "coffee-script": "~1.6"
+  , "grunt-cli": "~0.4"
   }
 }

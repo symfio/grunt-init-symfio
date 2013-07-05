@@ -1,16 +1,11 @@
-cruder = require "cruder"
+module.exports = (model, get) ->
+  model "Thing", "things", (mongoose) ->
+    new mongoose.Schema
+      thing: type: String, require: true
 
-
-module.exports = (container, callback) ->
-  connection = container.get "connection"
-  mongoose = container.get "mongoose"
-  app = container.get "app"
-
-  ThingSchema = new mongoose.Schema
-    thing: type: String, require: true
-
-  Thing = connection.model "things", ThingSchema
-
-  app.get "/things", cruder.list Thing.find()
-
-  callback()
+  get "/things", (Thing) ->
+    (req, res) ->
+      Thing.find (err, things) ->
+        return res.send 500 if err
+        return res.send 404 unless things
+        res.send things

@@ -1,0 +1,16 @@
+doctype 5
+html(lang="en", ng-app="{%= name %}")
+  head
+    meta(charset="utf8")
+    title {%= name %}
+
+    script(src="/bower_components/angular/angular.min.js")
+    script(src="/bower_components/angular-resource/angular-resource.min.js")
+    script(src="/scripts/{%= dev_file %}.js")
+    script(src="/scripts/{%= name %}.js")
+  body
+    div(ng-controller="TitleCtrl")
+      h1 {{ title|uppercase }}
+
+      ul
+        li(ng-repeat="thing in things") {{ thing.thing }}

@@ -1,13 +1,28 @@
 symfio = require "symfio"
 
+
 module.exports = container = symfio "{%= name %}", __dirname
 
-loader = container.get "loader"
+container.set "components", [
+  "angular#~1.0"
+  "angular-resource#~1.0"
+  "angular-mocks#~1.0"
+]
 
-loader.use require "symfio-contrib-express"
-loader.use require "symfio-contrib-express-logger"
-loader.use require "symfio-contrib-mongoose"
-loader.use require "./plugins/{%= name %}"
-loader.use require "symfio-contrib-fixtures"
+module.exports.promise = container.injectAll [
+  require "symfio-contrib-winston"
+  require "symfio-contrib-express"
+  require "symfio-contrib-assets"
+  require "symfio-contrib-bower"
+  require "symfio-contrib-mongoose"
+  require "symfio-contrib-fixtures"
 
-loader.load() if require.main is module
+  require "./plugins/{%= name %}"
+]
+
+
+if require.main is module
+  module.exports.promise.then ->
+    container.get "listener"
+  .then (listener) ->
+    listener.listen()

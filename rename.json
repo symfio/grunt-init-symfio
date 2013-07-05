@@ -1,4 +1,9 @@
 {
   "plugins/name.coffee": "plugins/{%= name %}.coffee"
-, "test/name.coffee": "test/{%= name %}.coffee"
+, "public/scripts/name.coffee": "public/scripts/{%= name %}.coffee"
+, "public/scripts/dev_name.coffee": "public/scripts/{%= dev_file %}.coffee"
+, "test/backend_acceptance/name.coffee": "test/backend_acceptance/{%= name %}.coffee"
+, "test/frontend_acceptance/name.coffee": "test/frontend_acceptance/{%= name %}.coffee"
+, "test/modules/name.coffee": "test/modules/{%= name %}.coffee"
+, "test/plugins/name.coffee": "test/plugins/{%= name %}.coffee"
 }

@@ -20,6 +20,10 @@ module.exports.template = (grunt, init, callback) ->
   ]
 
   init.process {}, prompts, (err, props) ->
+    props.uppercased_name = props.name.toUpperCase()
+    props.dev_name = "#{props.name}Dev"
+    props.dev_file = "#{props.name}_dev"
+
     files = init.filesToCopy props
     init.copyAndProcess files, props
     callback()
