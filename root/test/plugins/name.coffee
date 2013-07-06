@@ -1,39 +1,22 @@
-symfio = require "symfio"
-sinon = require "sinon"
-chai = require "chai"
+suite = require "symfio-suite"
 
 
 describe "{%= name %}()", ->
-  chai.use require "chai-as-promised"
-  chai.use require "sinon-chai"
-  chai.should()
+  it = suite.plugin [
+    require "../../plugins/{%= name %}"
 
-  container = null
-  sandbox = null
+    (container) ->
+      container.set "model", (sandbox) ->
+        sandbox.spy()
 
-  beforeEach (callback) ->
-    container = symfio "test", __dirname
-    sandbox = sinon.sandbox.create()
-
-    container.set "model", ->
-      sandbox.spy()
-
-    container.set "get", ->
-      sandbox.spy()
-
-    container.injectAll([
-      require "../../plugins/{%= name %}"
-    ]).should.notify callback
-
-  afterEach ->
-    sandbox.restore()
+      container.set "get", (sandbox) ->
+        sandbox.spy()
+  ]
 
   describe "model Thing", ->
-    it "should define model", (callback) ->
-      container.get("model")
-      .should.eventually.calledWith("Thing", "things").and.notify callback
+    it "should define model", (model) ->
+      model.should.calledWith "Thing", "things"
 
   describe "get /things", ->
-    it "should define controller", (callback) ->
-      container.get("get")
-      .should.eventually.calledWith("/things").and.notify callback
+    it "should define controller", (get) ->
+      get.should.calledWith "/things"
