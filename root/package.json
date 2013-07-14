@@ -21,8 +21,10 @@
   }
 , "dependencies": {
     "coffee-script": "~1.6"
+  , "when": "~2.2"
   , "symfio": "~2.0"
   , "symfio-contrib-winston": "~2.0"
+  , "symfio-contrib-nconf": "~2.0"
   , "symfio-contrib-express": "~2.0"
   , "symfio-contrib-assets": "~2.0"
   , "symfio-contrib-bower": "~2.0"
@@ -30,8 +32,7 @@
   , "symfio-contrib-fixtures": "~2.0"
   }
 , "devDependencies": {
-    "when": "~2.2"
-  , "symfio-suite": "~2.0"
+    "symfio-suite": "~2.0"
   , "grunt": "~0.4"
   , "grunt-simple-mocha": "~0.4"
   , "grunt-karma": "~0.4"

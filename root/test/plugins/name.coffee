@@ -9,8 +9,8 @@ describe "{%= name %}()", ->
     container.set "get", (sandbox) ->
       sandbox.spy()
 
-    container.inject (model, get) ->
-      require("../../plugins/{%= name %}") model, get
+    container.inject require "../../plugins/{%= name %}"
+    null
 
   describe "model Thing", ->
     it "should define model", (model) ->

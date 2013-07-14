@@ -30,10 +30,10 @@ module.exports = (grunt) ->
     container = require "./index"
 
     container.promise.then ->
-      container.get "listener"
+      container.get "startExpressServer"
 
-    .then (listener) ->
-      listener.listen()
+    .then (startExpressServer) ->
+      startExpressServer()
 
     .then ->
       container.get "logger"
